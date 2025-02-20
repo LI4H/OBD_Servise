@@ -1,0 +1,64 @@
+﻿<Window x:Class="WpfOBDTest.DashboardWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        Title="Dashboard" Height="Auto" Width="Auto" WindowState="Maximized" ResizeMode="CanResizeWithGrip">
+    <Window.Background>
+        <!-- Черный фон для всего экрана -->
+        <SolidColorBrush Color="Black"/>
+    </Window.Background>
+
+    <Grid Margin="10">
+        <!-- Рамка с градиентом -->
+        <Border BorderBrush="Yellow" BorderThickness="2" Padding="10" CornerRadius="4" Background="Black">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <!-- Заголовок -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Данные по скорости -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- График скорости -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Данные по оборотам -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- График оборотов -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Кнопка назад -->
+                </Grid.RowDefinitions>
+
+                <!-- Заголовок для данных -->
+                <TextBlock Text="Данные автомобиля" FontSize="20" FontWeight="Bold" Foreground="Yellow" HorizontalAlignment="Center" Grid.Row="0" Margin="10"/>
+
+                <!-- Данные по скорости -->
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10" Grid.Row="1">
+                    <TextBlock Text="Speed (км/ч):" FontSize="16" Foreground="Yellow"/>
+                    <TextBlock Text="{Binding Speed}" FontSize="20" FontWeight="Bold" Foreground="Yellow"/>
+                </StackPanel>
+
+                <!-- График скорости -->
+                <lvc:CartesianChart Width="600" Height="200" Grid.Row="2">
+                    <lvc:CartesianChart.Series>
+                        <lvc:LineSeries Title="Speed" Values="{Binding SpeedChart}"/>
+                    </lvc:CartesianChart.Series>
+                </lvc:CartesianChart>
+
+                <!-- Данные по оборотам -->
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10" Grid.Row="3">
+                    <TextBlock Text="RPM:" FontSize="16" Foreground="Yellow"/>
+                    <TextBlock Text="{Binding RPM}" FontSize="20" FontWeight="Bold" Foreground="Yellow"/>
+                </StackPanel>
+
+                <!-- График оборотов -->
+                <lvc:CartesianChart Width="600" Height="200" Grid.Row="4">
+                    <lvc:CartesianChart.Series>
+                        <lvc:LineSeries Title="RPM" Values="{Binding RpmChart}"/>
+                    </lvc:CartesianChart.Series>
+                </lvc:CartesianChart>
+
+                <!-- Кнопка назад -->
+                <Button Content="Назад" Click="GoBack" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="5" Margin="10"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
