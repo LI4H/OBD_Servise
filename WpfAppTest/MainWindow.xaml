@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="Auto" Width="Auto" WindowState="Maximized" ResizeMode="CanResizeWithGrip">
     <Window.Background>
-        <!-- Черный фон для всего экрана -->
         <SolidColorBrush Color="Black"/>
     </Window.Background>
 
@@ -18,36 +17,91 @@
 
                 <!-- Панель навигации -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Margin="0,0,0,20">
-                    <Button Content="Dashboard" Click="OpenDashboard" Margin="5" HorizontalAlignment="Stretch" Style="{StaticResource ButtonStyle}"/>
-                    <Button Content="Errors" Click="OpenErrors" Margin="5" HorizontalAlignment="Stretch" Style="{StaticResource ButtonStyle}"/>
+                    <Button Content="Динамика" Click="OpenDashboard" Margin="5" HorizontalAlignment="Stretch" Style="{StaticResource ButtonStyle}"/>
+                    <Button Content="Статистика" Click="OpenStatistics" Margin="5" HorizontalAlignment="Stretch" Style="{StaticResource ButtonStyle}"/>
+                    <Button Content="Ошибки" Click="OpenErrors" Margin="5" HorizontalAlignment="Stretch" Style="{StaticResource ButtonStyle}"/>
                     <Button Content="Инфо" Click="ShowInfo" Margin="5" HorizontalAlignment="Stretch" Style="{StaticResource ButtonStyle}"/>
                     <Button Content="Настройки" Click="OpenSettings" Margin="5" HorizontalAlignment="Stretch" Style="{StaticResource ButtonStyle}"/>
-                    <Button Content="Статистика" Click="OpenStatistics" Margin="5" HorizontalAlignment="Stretch" Style="{StaticResource ButtonStyle}"/>
                 </StackPanel>
 
                 <!-- Информационные данные -->
-                <Grid Grid.Row="1">
+                <Grid Grid.Row="1" Margin="10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10">
-                        <TextBlock Text="Скорость:" FontSize="18" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
-                        <TextBlock Text="{Binding Speed}" FontSize="18" Foreground="White" HorizontalAlignment="Center" Margin="10,0"/>
+                    <!-- Карточка скорости -->
+                    <Border Grid.Row="0" Grid.Column="0" BorderBrush="Yellow" BorderThickness="1" CornerRadius="4" Background="Black" Padding="10" Margin="10" Width="200" Height="200">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Text="Скорость:" FontSize="20" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding Speed}" FontSize="20" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Border>
 
-                        <TextBlock Text="Обороты:" FontSize="18" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
-                        <TextBlock Text="{Binding RPM}" FontSize="18" Foreground="White" HorizontalAlignment="Center" Margin="10,0"/>
+                    <!-- Карточка оборотов -->
+                    <Border Grid.Row="0" Grid.Column="1" BorderBrush="Yellow" BorderThickness="1" CornerRadius="4" Background="Black" Padding="10" Margin="10" Width="200" Height="200">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Text="Обороты:" FontSize="20" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding RPM}" FontSize="20" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Border>
 
-                        <TextBlock Text="Температура двигателя:" FontSize="18" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
-                        <TextBlock Text="{Binding EngineTemp}" FontSize="18" Foreground="White" HorizontalAlignment="Center" Margin="10,0"/>
+                    <!-- Карточка температуры двигателя -->
+                    <Border Grid.Row="0" Grid.Column="2" BorderBrush="Yellow" BorderThickness="1" CornerRadius="4" Background="Black" Padding="10" Margin="10" Width="200" Height="200">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Text="Температура двигателя:" FontSize="20" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding EngineTemp}" FontSize="20" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Border>
 
-                        <TextBlock Text="Уровень топлива:" FontSize="18" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
-                        <TextBlock Text="{Binding FuelLevel}" FontSize="18" Foreground="White" HorizontalAlignment="Center" Margin="10,0"/>
-                    </StackPanel>
+                    <!-- Карточка уровня топлива -->
+                    <Border Grid.Row="0" Grid.Column="3" BorderBrush="Yellow" BorderThickness="1" CornerRadius="4" Background="Black" Padding="10" Margin="10" Width="200" Height="200">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Text="Уровень топлива:" FontSize="20" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding FuelLevel}" FontSize="20" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Карточка нагрузки двигателя -->
+                    <Border Grid.Row="1" Grid.Column="0" BorderBrush="Yellow" BorderThickness="1" CornerRadius="4" Background="Black" Padding="10" Margin="10" Width="200" Height="200">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Text="Нагрузка двигателя:" FontSize="20" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding EngineLoad}" FontSize="20" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Карточка топливной эффективности -->
+                    <Border Grid.Row="1" Grid.Column="1" BorderBrush="Yellow" BorderThickness="1" CornerRadius="4" Background="Black" Padding="10" Margin="10" Width="200" Height="200">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Text="Топливная эффективность:" FontSize="20" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding FuelEfficiency}" FontSize="20" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Карточка давления масла -->
+                    <Border Grid.Row="1" Grid.Column="2" BorderBrush="Yellow" BorderThickness="1" CornerRadius="4" Background="Black" Padding="10" Margin="10" Width="200" Height="200">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Text="Давление масла:" FontSize="20" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding OilPressure}" FontSize="20" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Карточка напряжения аккумулятора -->
+                    <Border Grid.Row="1" Grid.Column="3" BorderBrush="Yellow" BorderThickness="1" CornerRadius="4" Background="Black" Padding="10" Margin="10" Width="200" Height="200">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Text="Напряжение аккумулятора:" FontSize="20" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding BatteryVoltage}" FontSize="20" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Border>
                 </Grid>
+
             </Grid>
         </Border>
     </Grid>

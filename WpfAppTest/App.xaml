@@ -14,7 +14,7 @@
 
         <!-- Стиль для заголовков (текста) на страницах -->
         <Style x:Key="TextBlockStyle" TargetType="TextBlock">
-            <Setter Property="Foreground" Value="Yellow"/>
+            <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontSize" Value="24"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -23,7 +23,7 @@
         <!-- Стиль для кнопок -->
         <Style x:Key="ButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="Black"/>
-            <Setter Property="Foreground" Value="Yellow"/>
+            <Setter Property="Foreground" Value="White"/>
             <Setter Property="Padding" Value="10,5"/>
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="BorderBrush" Value="Yellow"/>
@@ -36,12 +36,28 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" CornerRadius="4" Padding="10,5">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Border x:Name="OuterBorder"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="1"
+                        CornerRadius="4"
+                        Padding="4">
+                            <Grid>
+                                <!-- Внутренний квадрат для выделения -->
+                                <Border x:Name="Highlight"
+                                Background="Cyan"
+                                Opacity="0"
+                                CornerRadius="4"
+                                Margin="0.1"/>
+                                <!-- Текст кнопки -->
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
                         </Border>
+
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="Cyan"/>
+                                <Setter TargetName="Highlight" Property="Opacity" Value="1"/>
+                                <Setter Property="Foreground" Value="Black"/>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
                                 <Setter Property="Background" Value="Yellow"/>
@@ -52,6 +68,8 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+
 
         <!-- Стиль для элементов списка -->
         <Style x:Key="FuturisticListBoxStyle" TargetType="ListBox">
