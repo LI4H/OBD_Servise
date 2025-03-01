@@ -20,7 +20,7 @@ namespace WpfOBDTest
             InitializeViewModel();
             LoadData();
             DrawGraph();
-            ConfigureAxis();
+            //ConfigureAxis();
         }
 
         private void InitializeViewModel()
@@ -55,27 +55,27 @@ namespace WpfOBDTest
         }
 
         // Метод для настройки осей
-        private void ConfigureAxis()
-        {
-            // Настроим ось X
-            ChartControl.AxisX.Add(new Axis
-            {
-                Title = "Time",
-                LabelsRotation = 15,
-                Separator = new Separator
-                {
-                    Step = 1,
-                    IsEnabled = true
-                }
-            });
+        //private void ConfigureAxis()
+        //{
+        //    // Настроим ось X
+        //    ChartControl.AxisX.Add(new Axis
+        //    {
+        //        Title = "Time",
+        //        LabelsRotation = 15,
+        //        Separator = new Separator
+        //        {
+        //            Step = 1,
+        //            IsEnabled = true
+        //        }
+        //    });
 
-            // Настроим ось Y
-            ChartControl.AxisY.Add(new Axis
-            {
-                Title = "Value",
-                LabelFormatter = value => value.ToString("N")
-            });
-        }
+        //    // Настроим ось Y
+        //    ChartControl.AxisY.Add(new Axis
+        //    {
+        //        Title = "Value",
+        //        LabelFormatter = value => value.ToString("N")
+        //    });
+        //}
 
         // Метод для отрисовки графиков +
         private void DrawGraph()

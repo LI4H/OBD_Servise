@@ -2,82 +2,105 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
-        Title="StatisticsWindow" Height="450" Width="800">
-    <Grid>
-        
+        xmlns:controls="clr-namespace:WpfOBDTest.Controls"
+        Height="Auto" Width="Auto" WindowState="Maximized"
+        Background="Black"
+        WindowStyle="SingleBorderWindow">
+    <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Блок с информацией -->
-        <WrapPanel>
-            <!-- Блок 1: Ср. расход топлива -->
-            <Border BorderBrush="Yellow" BorderThickness="1" CornerRadius="4" Background="Black" Padding="10" Margin="10" Width="200" Height="200">
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock Text="Ср. расход топлива:" FontSize="18" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
-                    <TextBlock Text="{Binding AvgFuelConsumption}" FontSize="18" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
-                </StackPanel>
-            </Border>
+        <!-- Панель навигации -->
+        <controls:NavigationPanel x:Name="NavigationPanel" Grid.Row="0"/>
 
-            <!-- Блок 2: Средняя скорость -->
-            <Border BorderBrush="Green" BorderThickness="1" CornerRadius="4" Background="Black" Padding="10" Margin="10" Width="200" Height="200">
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock Text="Средняя скорость:" FontSize="18" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
-                    <TextBlock Text="{Binding AvgSpeed}" FontSize="18" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
-                </StackPanel>
-            </Border>
+        <!-- Градиентная рамка -->
+        <Border BorderThickness="2,2,0,0" Padding="20" Grid.Row="1">
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Offset="0" Color="Yellow"/>
+                    <GradientStop Offset="1" Color="#555"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
 
-            <!-- Блок 3: Моточасы -->
-            <Border BorderBrush="Red" BorderThickness="1" CornerRadius="4" Background="Black" Padding="10" Margin="10" Width="200" Height="200">
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock Text="Моточасы:" FontSize="18" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
-                    <TextBlock Text="{Binding EngineHours}" FontSize="18" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
-                </StackPanel>
-            </Border>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
-            <!-- Блок 4: Пройденный путь -->
-            <Border BorderBrush="Blue" BorderThickness="1" CornerRadius="4" Background="Black" Padding="10" Margin="10" Width="200" Height="200">
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock Text="Пройденный путь:" FontSize="18" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
-                    <TextBlock Text="{Binding DistanceTraveled}" FontSize="18" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
-                </StackPanel>
-            </Border>
+                <!-- Блок с информацией -->
+                <WrapPanel>
+                    <!-- Блок 1: Ср. расход топлива -->
+                    <Border BorderBrush="Yellow" BorderThickness="1" CornerRadius="4" Background="Black" Padding="10" Margin="10" Width="200" Height="200">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Text="Ср. расход топлива:" FontSize="18" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding AvgFuelConsumption}" FontSize="18" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Border>
 
-            <!-- Блок 5: Использовано топлива -->
-            <Border BorderBrush="Orange" BorderThickness="1" CornerRadius="4" Background="Black" Padding="10" Margin="10" Width="200" Height="200">
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock Text="Использовано топлива:" FontSize="18" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
-                    <TextBlock Text="{Binding FuelUsed}" FontSize="18" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
-                </StackPanel>
-            </Border>
+                    <!-- Блок 2: Средняя скорость -->
+                    <Border BorderBrush="Green" BorderThickness="1" CornerRadius="4" Background="Black" Padding="10" Margin="10" Width="200" Height="200">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Text="Средняя скорость:" FontSize="18" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding AvgSpeed}" FontSize="18" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Border>
 
-            <!-- Блок 6: Стоимость топлива -->
-            <Border BorderBrush="Purple" BorderThickness="1" CornerRadius="4" Background="Black" Padding="10" Margin="10" Width="200" Height="200">
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock Text="Стоимость топлива:" FontSize="18" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
-                    <TextBlock Text="{Binding FuelCost}" FontSize="18" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
-                </StackPanel>
-            </Border>
-        </WrapPanel>
-        <!-- Общий график -->
-        <lvc:CartesianChart Name="ChartControl" Width="700" Height="400" Margin="10" Grid.Row="1">
-            <lvc:CartesianChart.Series>
-                <!-- Линия для одного общего графика -->
-                <lvc:LineSeries Title="Общий график" Values="{Binding CombinedChartData}" Stroke="Yellow" PointGeometrySize="0"/>
-            </lvc:CartesianChart.Series>
+                    <!-- Блок 3: Моточасы -->
+                    <Border BorderBrush="Red" BorderThickness="1" CornerRadius="4" Background="Black" Padding="10" Margin="10" Width="200" Height="200">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Text="Моточасы:" FontSize="18" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding EngineHours}" FontSize="18" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Border>
 
-            <!-- Ось X (время) -->
-            <lvc:CartesianChart.AxisX>
-                <lvc:Axis Title="Время" Labels="{Binding TimeLabels}" Separator="{x:Null}">
-                    <lvc:Axis.LabelsRotation>45</lvc:Axis.LabelsRotation>
-                </lvc:Axis>
-            </lvc:CartesianChart.AxisX>
+                    <!-- Блок 4: Пройденный путь -->
+                    <Border BorderBrush="Blue" BorderThickness="1" CornerRadius="4" Background="Black" Padding="10" Margin="10" Width="200" Height="200">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Text="Пройденный путь:" FontSize="18" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding DistanceTraveled}" FontSize="18" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Border>
 
-            <!-- Ось Y -->
-            <lvc:CartesianChart.AxisY>
-                <lvc:Axis Title="Значения" />
-            </lvc:CartesianChart.AxisY>
-        </lvc:CartesianChart>
+                    <!-- Блок 5: Использовано топлива -->
+                    <Border BorderBrush="Orange" BorderThickness="1" CornerRadius="4" Background="Black" Padding="10" Margin="10" Width="200" Height="200">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Text="Использовано топлива:" FontSize="18" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding FuelUsed}" FontSize="18" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Блок 6: Стоимость топлива -->
+                    <Border BorderBrush="Purple" BorderThickness="1" CornerRadius="4" Background="Black" Padding="10" Margin="10" Width="200" Height="200">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Text="Стоимость топлива:" FontSize="18" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding FuelCost}" FontSize="18" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Border>
+                </WrapPanel>
+
+                <!-- Общий график -->
+                <!--<lvc:CartesianChart Name="ChartControl" Width="700" Height="400" Margin="10" Grid.Row="1">
+                    <lvc:CartesianChart.Series>
+                        --><!-- Линия для одного общего графика --><!--
+                        <lvc:LineSeries Title="Общий график" Values="{Binding CombinedChartData}" Stroke="Yellow" PointGeometrySize="0"/>
+                    </lvc:CartesianChart.Series>
+
+                    --><!-- Ось X (время) --><!--
+                    <lvc:CartesianChart.AxisX>
+                        <lvc:Axis Title="Время" Labels="{Binding TimeLabels}" Separator="{x:Null}">
+                            <lvc:Axis.LabelsRotation>45</lvc:Axis.LabelsRotation>
+                        </lvc:Axis>
+                    </lvc:CartesianChart.AxisX>
+
+                    --><!-- Ось Y --><!--
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis Title="Значения" />
+                    </lvc:CartesianChart.AxisY>
+                </lvc:CartesianChart>-->
+            </Grid>
+        </Border>
     </Grid>
 </Window>
