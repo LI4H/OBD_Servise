@@ -6,9 +6,7 @@ using System.Windows.Controls;
 using LiveCharts;
 using LiveCharts.Wpf;
 
-
 namespace WpfOBDTest.Services
-
 {
     public class FakeObdService
     {
@@ -21,7 +19,16 @@ namespace WpfOBDTest.Services
             _carData = carData;
             _timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
             _timer.Tick += UpdateFakeData;
+        }
+
+        public void Start()
+        {
             _timer.Start();
+        }
+
+        public void Stop()
+        {
+            _timer.Stop();
         }
 
         private void UpdateFakeData(object sender, EventArgs e)
@@ -31,6 +38,7 @@ namespace WpfOBDTest.Services
             _carData.EngineTemp = _random.Next(80, 120);
             _carData.FuelLevel = _random.Next(0, 100);
         }
+
         public class ErrorCode
         {
             public string Code { get; set; }
