@@ -35,7 +35,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <!-- Информационные данные -->
+                <!-- Основное содержимое -->
                 <Grid Grid.Row="1" Margin="10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -48,21 +48,23 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Margin="0,0,0,20">
-                    
-                </StackPanel>
-
-                <Grid Grid.Row="1">
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,10">
+                    <!-- Заголовок и настройки -->
+                    <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0, 0, 0, 20">
                         <TextBlock Text="Настройки" FontSize="24" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
-                        <ListBox x:Name="LanguageListBox" SelectionChanged="ChangeLanguage"
-                                 Style="{StaticResource FuturisticListBoxStyle}">
-                            <ListBoxItem Content="Русский" Tag="ru-RU" Style="{StaticResource FuturisticListBoxItemStyle}"/>
-                            <ListBoxItem Content="English" Tag="en-US" Style="{StaticResource FuturisticListBoxItemStyle}"/>
-                        </ListBox>
                     </StackPanel>
+
+                    <!-- Список языков -->
+                    <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, 0, 0, 10">
+                            <TextBlock Text="Выберите язык" FontSize="20" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" Margin="0, 0, 0, 10"/>
+                            <ListBox x:Name="LanguageListBox" SelectionChanged="ChangeLanguage"
+                                     Style="{StaticResource FuturisticListBoxStyle}">
+                                <ListBoxItem Content="Русский" Tag="ru-RU" Style="{StaticResource FuturisticListBoxItemStyle}"/>
+                                <ListBoxItem Content="English" Tag="en-US" Style="{StaticResource FuturisticListBoxItemStyle}"/>
+                            </ListBox>
+                        </StackPanel>
+                    </Grid>
                 </Grid>
-            </Grid>
             </Grid>
         </Border>
             

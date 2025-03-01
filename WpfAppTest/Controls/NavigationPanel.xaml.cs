@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using WpfAppTest;
 
 namespace WpfOBDTest.Controls
 {
@@ -50,6 +51,9 @@ namespace WpfOBDTest.Controls
                     break;
                 case "Настройки":
                     ShowWindow<SettingsWindow>(currentWindow);
+                    break;
+                case "Инфо":
+                    ShowWindow<InfoWindow>(currentWindow);
                     break;
             }
         }
