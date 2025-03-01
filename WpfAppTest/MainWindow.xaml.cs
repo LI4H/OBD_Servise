@@ -1,13 +1,16 @@
-﻿using System.Windows;
-using WpfAppTest;
+﻿using System;
 using System.Globalization;
 using System.Threading;
-using System;
+using System.Windows;
+using System.Windows.Controls;
+using WpfAppTest;
+using WpfOBDTest.Services;
 
 namespace WpfOBDTest
 {
     public partial class MainWindow : Window
     {
+        private TabControl _TabControl;
         private readonly CarDataModel _carData;
 
         public MainWindow()
@@ -15,41 +18,26 @@ namespace WpfOBDTest
             InitializeComponent();
             _carData = new CarDataModel();
             DataContext = _carData;
-            new Services.FakeObdService(_carData); // Генерация данных
+            new FakeObdService(_carData); // Генерация данных
+
+            // Подписываемся на событие после инициализации интерфейса
+            this.Loaded += (s, e) =>
+            {
+                _TabControl = (TabControl)NavigationPanel.FindName("TabControl");
+                if (_TabControl != null)
+                    _TabControl.SelectionChanged += TabControl_SelectionChanged;
+            };
+
             ChangeLanguage("en");
         }
 
-        private void OpenDashboard(object sender, RoutedEventArgs e)
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            this.Visibility = Visibility.Collapsed;
-            DashboardWindow dashboard = new DashboardWindow();
-            dashboard.Show();
-        }
-
-        private void OpenErrors(object sender, RoutedEventArgs e)
-        {
-            this.Visibility = Visibility.Collapsed;
-            ErrorsWindow errors = new ErrorsWindow();
-            errors.Show();
-        }
-
-        private void ShowInfo(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show(_carData.GetStaticInfo(), "Статическая информация");
-        }
-
-        private void OpenSettings(object sender, RoutedEventArgs e)
-        {
-            this.Visibility = Visibility.Collapsed;
-            SettingsWindow settings = new SettingsWindow();
-            settings.Show();
-        }
-
-        private void OpenStatistics(object sender, RoutedEventArgs e)
-        {
-            this.Visibility = Visibility.Collapsed;
-            StatisticsWindow statistics = new StatisticsWindow();
-            statistics.Show();
+            if (_TabControl.SelectedItem is TabItem selectedTab)
+            {
+                string tabName = selectedTab.Header.ToString();
+                NavigationPanel.NavigateTo(tabName, this);
+            }
         }
 
         public void ChangeLanguage(string languageCode)
@@ -59,28 +47,17 @@ namespace WpfOBDTest
                 var culture = new CultureInfo(languageCode);
                 Thread.CurrentThread.CurrentCulture = culture;
                 Thread.CurrentThread.CurrentUICulture = culture;
-
-                var dict = new ResourceDictionary();
-
-                if (languageCode == "ru")
-                    dict.Source = new Uri("pack://application:,,,/Resources/Strings.ru.xaml");
-                else if (languageCode == "en")
-                    dict.Source = new Uri("pack://application:,,,/Resources/Strings.en.xaml");
-
-                this.Resources.MergedDictionaries.Clear();
-                this.Resources.MergedDictionaries.Add(dict);
-            }
-            catch (UriFormatException ex)
-            {
-                // Логирование или отображение ошибки
-                MessageBox.Show($"Ошибка загрузки ресурсов: {ex.Message}", "Ошибка");
+                var dict = new ResourceDictionary
+                {
+                    Source = new Uri($"pack://application:,,,/Resources/Strings.{languageCode}.xaml")
+                };
+                Resources.MergedDictionaries.Clear();
+                Resources.MergedDictionaries.Add(dict);
             }
             catch (Exception ex)
             {
-                // Общая обработка ошибок
-                MessageBox.Show($"Неизвестная ошибка: {ex.Message}", "Ошибка");
+                MessageBox.Show($"Ошибка загрузки ресурсов: {ex.Message}", "Ошибка");
             }
         }
-
     }
 }
