@@ -2,10 +2,8 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Errors" Height="Auto" Width="Auto" WindowState="Maximized" ResizeMode="CanResizeWithGrip"
-           xmlns:controls="clr-namespace:WpfOBDTest.Controls"
-         Background="Black"
-        >
-
+        xmlns:controls="clr-namespace:WpfOBDTest.Controls"
+        Background="Black">
 
     <Grid Margin="10">
         <Grid.RowDefinitions>
@@ -17,9 +15,6 @@
         <controls:NavigationPanel x:Name="NavigationPanel" Grid.Row="0"/>
 
         <!-- Градиентная рамка -->
-
-        <!--<controls:GradientBorder Grid.Row="1" >-->
-
         <Border BorderThickness="2,2,0,0" Padding="50"  Grid.Row="1">
             <Border.BorderBrush>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
@@ -28,14 +23,17 @@
                 </LinearGradientBrush>
             </Border.BorderBrush>
 
-
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
+
                 <!-- Заголовок -->
-                <TextBlock Text="Ошибки автомобиля" FontSize="20" FontWeight="Bold" Foreground="Yellow" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10" Grid.Row="0"/>
+                <TextBlock Text="Ошибки автомобиля" FontSize="20" FontWeight="Bold" Foreground="Yellow" 
+                           HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Grid.Row="0"/>
 
                 <!-- Рамка для поля поиска -->
                 <Grid Grid.Row="1" Margin="10,10,10,10">
@@ -44,20 +42,25 @@
                     </Grid.Background>
                     <!-- Поле для поиска ошибок -->
                     <TextBox Name="SearchBox" VerticalAlignment="Top" HorizontalAlignment="Stretch" 
-                             TextChanged="SearchErrors" Height="30" Background="Black" Foreground="Yellow" BorderBrush="Yellow" BorderThickness="1"
-                             GotFocus="SearchBox_GotFocus" LostFocus="SearchBox_LostFocus">
+         TextChanged="SearchErrors" Height="30" Background="Black" Foreground="Yellow" BorderBrush="Yellow" 
+         BorderThickness="1" GotFocus="SearchBox_GotFocus" LostFocus="SearchBox_LostFocus"
+         VerticalContentAlignment="Center" Padding="12,0,0,0">
                     </TextBox>
 
+
+
                     <!-- Текст подсказки, который будет показываться, когда поле пустое -->
-                    <TextBlock Name="SearchPlaceholder" Text="Поиск" Foreground="Yellow" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="12,0,0,0"/>
+                    <TextBlock Name="SearchPlaceholder" Text="Поиск" Foreground="Yellow" VerticalAlignment="Center" 
+                               HorizontalAlignment="Left" Margin="12,0,0,0"/>
                 </Grid>
 
                 <!-- Список ошибок, занимающий всё пространство -->
-                <ListBox Name="ErrorList" Margin="10,10,10,10" SelectionChanged="OnErrorSelectionChanged" Grid.Row="3" 
-                         Background="Black" Foreground="Yellow" BorderBrush="Yellow" BorderThickness="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                <ListBox Name="ErrorList" Margin="10,10,10,10" SelectionChanged="OnErrorSelectionChanged" 
+                         Background="Black" Foreground="Yellow" BorderBrush="Yellow" BorderThickness="1" 
+                         HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2"/>
 
-                <!-- Новый Grid для кнопок внизу -->
-                <Grid Grid.Row="4" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10">
+                <!-- Кнопка сброса ошибки -->
+                <Grid Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
