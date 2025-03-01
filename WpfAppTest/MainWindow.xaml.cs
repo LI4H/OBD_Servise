@@ -12,13 +12,16 @@ namespace WpfOBDTest
     {
         private TabControl _TabControl;
         private readonly CarDataModel _carData;
+        private FakeObdService _fakeObdService;
+        private bool _isDemoMode = false;
+ 
 
         public MainWindow()
         {
             InitializeComponent();
             _carData = new CarDataModel();
             DataContext = _carData;
-            new FakeObdService(_carData); // Генерация данных
+            _fakeObdService = new FakeObdService(_carData); // Генерация данных ctrl z
 
             // Подписываемся на событие после инициализации интерфейса
             this.Loaded += (s, e) =>
@@ -57,6 +60,19 @@ namespace WpfOBDTest
             catch (Exception ex)
             {
                 MessageBox.Show($"Ошибка загрузки ресурсов: {ex.Message}", "Ошибка");
+            }
+        }
+
+        private void DemoButton_Click(object sender, RoutedEventArgs e)
+        {
+            _isDemoMode = !_isDemoMode;
+            if (_isDemoMode)
+            {
+                _fakeObdService.Start();
+            }
+            else
+            {
+                _fakeObdService.Stop();
             }
         }
     }

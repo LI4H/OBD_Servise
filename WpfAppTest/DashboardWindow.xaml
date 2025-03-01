@@ -45,7 +45,7 @@
                     <Border BorderBrush="Yellow" BorderThickness="1" CornerRadius="4" Background="Black" Padding="10" Margin="10">
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                             <TextBlock Text="Скорость (км/ч):" FontSize="16" Foreground="Yellow" HorizontalAlignment="Center"/>
-                            <TextBlock Text="{Binding Speed}" FontSize="20" FontWeight="Bold" Foreground="Yellow" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{Binding Speed, TargetNullValue=0, FallbackValue=0}" FontSize="20" FontWeight="Bold" Foreground="Yellow" HorizontalAlignment="Center"/>
                             <lvc:CartesianChart Width="300" Height="200">
                                 <lvc:CartesianChart.Series>
                                     <lvc:LineSeries Title="Скорость" Values="{Binding SpeedChart}"/>
@@ -58,7 +58,7 @@
                     <Border BorderBrush="Yellow" BorderThickness="1" CornerRadius="4" Background="Black" Padding="10" Margin="10">
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                             <TextBlock Text="Обороты (RPM):" FontSize="16" Foreground="Yellow" HorizontalAlignment="Center"/>
-                            <TextBlock Text="{Binding RPM}" FontSize="20" FontWeight="Bold" Foreground="Yellow" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{Binding RPM, TargetNullValue=0, FallbackValue=0}" FontSize="20" FontWeight="Bold" Foreground="Yellow" HorizontalAlignment="Center"/>
                             <lvc:CartesianChart Width="300" Height="200">
                                 <lvc:CartesianChart.Series>
                                     <lvc:LineSeries Title="Обороты" Values="{Binding RpmChart}"/>
@@ -71,7 +71,7 @@
                     <Border BorderBrush="Yellow" BorderThickness="1" CornerRadius="4" Background="Black" Padding="10" Margin="10">
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                             <TextBlock Text="Температура двигателя (°C):" FontSize="16" Foreground="Yellow" HorizontalAlignment="Center"/>
-                            <TextBlock Text="{Binding EngineTemp}" FontSize="20" FontWeight="Bold" Foreground="Yellow" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{Binding EngineTemp, TargetNullValue=0, FallbackValue=0}" FontSize="20" FontWeight="Bold" Foreground="Yellow" HorizontalAlignment="Center"/>
                             <lvc:CartesianChart Width="300" Height="200">
                                 <lvc:CartesianChart.Series>
                                     <lvc:LineSeries Title="Температура двигателя" Values="{Binding EngineTempChart}"/>
@@ -84,7 +84,7 @@
                     <Border BorderBrush="Yellow" BorderThickness="1" CornerRadius="4" Background="Black" Padding="10" Margin="10">
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                             <TextBlock Text="Уровень топлива (%):" FontSize="16" Foreground="Yellow" HorizontalAlignment="Center"/>
-                            <TextBlock Text="{Binding FuelLevel}" FontSize="20" FontWeight="Bold" Foreground="Yellow" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{Binding FuelLevel, TargetNullValue=0, FallbackValue=0}" FontSize="20" FontWeight="Bold" Foreground="Yellow" HorizontalAlignment="Center"/>
                             <lvc:CartesianChart Width="300" Height="200">
                                 <lvc:CartesianChart.Series>
                                     <lvc:LineSeries Title="Уровень топлива" Values="{Binding FuelLevelChart}"/>
@@ -97,7 +97,7 @@
                     <Border BorderBrush="Yellow" BorderThickness="1" CornerRadius="4" Background="Black" Padding="10" Margin="10">
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                             <TextBlock Text="Нагрузка двигателя (%):" FontSize="16" Foreground="Yellow" HorizontalAlignment="Center"/>
-                            <TextBlock Text="{Binding EngineLoad}" FontSize="20" FontWeight="Bold" Foreground="Yellow" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{Binding EngineLoad, TargetNullValue=0, FallbackValue=0}" FontSize="20" FontWeight="Bold" Foreground="Yellow" HorizontalAlignment="Center"/>
                             <lvc:CartesianChart Width="300" Height="200">
                                 <lvc:CartesianChart.Series>
                                     <lvc:LineSeries Title="Нагрузка двигателя" Values="{Binding EngineLoadChart}"/>
@@ -110,7 +110,7 @@
                     <Border BorderBrush="Yellow" BorderThickness="1" CornerRadius="4" Background="Black" Padding="10" Margin="10">
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                             <TextBlock Text="Топливная эффективность (л/100км):" FontSize="16" Foreground="Yellow" HorizontalAlignment="Center"/>
-                            <TextBlock Text="{Binding FuelEfficiency}" FontSize="20" FontWeight="Bold" Foreground="Yellow" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{Binding FuelEfficiency, TargetNullValue=0, FallbackValue=0}" FontSize="20" FontWeight="Bold" Foreground="Yellow" HorizontalAlignment="Center"/>
                             <lvc:CartesianChart Width="300" Height="200">
                                 <lvc:CartesianChart.Series>
                                     <lvc:LineSeries Title="Топливная эффективность" Values="{Binding FuelEfficiencyChart}"/>
@@ -123,7 +123,7 @@
                     <Border BorderBrush="Yellow" BorderThickness="1" CornerRadius="4" Background="Black" Padding="10" Margin="10">
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                             <TextBlock Text="Давление масла (psi):" FontSize="16" Foreground="Yellow" HorizontalAlignment="Center"/>
-                            <TextBlock Text="{Binding OilPressure}" FontSize="20" FontWeight="Bold" Foreground="Yellow" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{Binding OilPressure, TargetNullValue=0, FallbackValue=0}" FontSize="20" FontWeight="Bold" Foreground="Yellow" HorizontalAlignment="Center"/>
                             <lvc:CartesianChart Width="300" Height="200">
                                 <lvc:CartesianChart.Series>
                                     <lvc:LineSeries Title="Давление масла" Values="{Binding OilPressureChart}"/>
@@ -137,7 +137,7 @@
                     <Border BorderBrush="Yellow" BorderThickness="1" CornerRadius="4" Background="Black" Padding="10" Margin="10">
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                             <TextBlock Text="Напряжение аккумулятора (V):" FontSize="16" Foreground="Yellow" HorizontalAlignment="Center"/>
-                            <TextBlock Text="{Binding BatteryVoltage}" FontSize="20" FontWeight="Bold" Foreground="Yellow" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{Binding BatteryVoltage, TargetNullValue=0, FallbackValue=0}" FontSize="20" FontWeight="Bold" Foreground="Yellow" HorizontalAlignment="Center"/>
                             <lvc:CartesianChart Width="300" Height="200">
                                 <lvc:CartesianChart.Series>
                                     <lvc:LineSeries Title="Напряжение аккумулятора" Values="{Binding BatteryVoltageChart}"/>

@@ -43,16 +43,11 @@
 				<!-- Карточка скорости -->
 				<Border Grid.Row="0" Grid.Column="0" BorderBrush="Yellow" BorderThickness="1" CornerRadius="4" Background="Black" Padding="0" Margin="10" Width="200" Height="200">
 					<Grid>
-						<!-- название -->
 						<StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,25,0,0">
 							<TextBlock Text="Скорость:" FontSize="20" FontWeight="Bold" Foreground="White" TextWrapping="Wrap" HorizontalAlignment="Center"/>
 						</StackPanel>
-
-						<!-- Цифровое значение (по центру) -->
-						<TextBlock Text="{Binding Speed}" FontSize="30" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
-						<!-- Единицы измерения -->
-						<TextBlock Text="м/с" FontSize="20" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,25"/>
+						<TextBlock Text="{Binding Speed, TargetNullValue=0, FallbackValue=0}" FontSize="30" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+						<TextBlock Text="км/ч" FontSize="20" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,25"/>
 					</Grid>
 				</Border>
 
@@ -62,7 +57,7 @@
 						<StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,25,0,0">
 							<TextBlock Text="Обороты:" FontSize="20" FontWeight="Bold" Foreground="White" TextWrapping="Wrap" HorizontalAlignment="Center"/>
 						</StackPanel>
-						<TextBlock Text="{Binding RPM}" FontSize="30" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+						<TextBlock Text="{Binding RPM, TargetNullValue=0, FallbackValue=0}" FontSize="30" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 						<TextBlock Text="об/мин" FontSize="20" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,25"/>
 					</Grid>
 				</Border>
@@ -73,7 +68,7 @@
 						<StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,25,0,0">
 							<TextBlock Text="Температура двигателя:" FontSize="20" FontWeight="Bold" Foreground="White" TextWrapping="Wrap" HorizontalAlignment="Center"/>
 						</StackPanel>
-						<TextBlock Text="{Binding EngineTemp}" FontSize="30" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+						<TextBlock Text="{Binding EngineTemp, TargetNullValue=0, FallbackValue=0}" FontSize="30" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 						<TextBlock Text="°C" FontSize="20" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,25"/>
 					</Grid>
 				</Border>
@@ -84,7 +79,7 @@
 						<StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,25,0,0">
 							<TextBlock Text="Уровень топлива:" FontSize="20" FontWeight="Bold" Foreground="White" TextWrapping="Wrap" HorizontalAlignment="Center"/>
 						</StackPanel>
-						<TextBlock Text="{Binding FuelLevel}" FontSize="30" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+						<TextBlock Text="{Binding FuelLevel, TargetNullValue=0, FallbackValue=0}" FontSize="30" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 						<TextBlock Text="%" FontSize="20" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,25"/>
 					</Grid>
 				</Border>
@@ -95,7 +90,7 @@
 						<StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,25,0,0">
 							<TextBlock Text="Нагрузка двигателя:" FontSize="20" FontWeight="Bold" Foreground="White" TextWrapping="Wrap" HorizontalAlignment="Center"/>
 						</StackPanel>
-						<TextBlock Text="{Binding EngineLoad}" FontSize="30" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+						<TextBlock Text="{Binding EngineLoad, TargetNullValue=0, FallbackValue=0}" FontSize="30" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 						<TextBlock Text="%" FontSize="20" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,25"/>
 					</Grid>
 				</Border>
@@ -106,7 +101,7 @@
 						<StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,25,0,0">
 							<TextBlock Text="Топливная эффективность:" FontSize="20" FontWeight="Bold" Foreground="White" TextWrapping="Wrap" HorizontalAlignment="Center"/>
 						</StackPanel>
-						<TextBlock Text="{Binding FuelEfficiency}" FontSize="30" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+						<TextBlock Text="{Binding FuelEfficiency, TargetNullValue=0, FallbackValue=0}" FontSize="30" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 						<TextBlock Text="км/л" FontSize="20" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,25"/>
 					</Grid>
 				</Border>
@@ -117,7 +112,7 @@
 						<StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,25,0,0">
 							<TextBlock Text="Давление масла:" FontSize="20" FontWeight="Bold" Foreground="White" TextWrapping="Wrap" HorizontalAlignment="Center"/>
 						</StackPanel>
-						<TextBlock Text="{Binding OilPressure}" FontSize="30" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+						<TextBlock Text="{Binding OilPressure, TargetNullValue=0, FallbackValue=0}" FontSize="30" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 						<TextBlock Text="атм" FontSize="20" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,25"/>
 					</Grid>
 				</Border>
@@ -128,7 +123,7 @@
 						<StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,25,0,0">
 							<TextBlock Text="Напряжение аккумулятора:" FontSize="20" FontWeight="Bold" Foreground="White" TextWrapping="Wrap" HorizontalAlignment="Center"/>
 						</StackPanel>
-						<TextBlock Text="{Binding BatteryVoltage}" FontSize="30" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+						<TextBlock Text="{Binding BatteryVoltage, TargetNullValue=0, FallbackValue=0}" FontSize="30" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 						<TextBlock Text="В" FontSize="20" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,25"/>
 					</Grid>
 				</Border>
@@ -141,25 +136,26 @@
 
 
 
+
 			</Grid>
            </Border>
 
-		<!-- Строки состояния и кнопки внизу -->
+		<!-- Строки состояния -->
 		<StackPanel Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10">
 			<!-- Статус подключения ELM -->
 			<TextBlock FontSize="16" HorizontalAlignment="Left">
 				<Run Text="Подключение к ELM: " Foreground="White"/>
-				<Run Text="Отключено" Foreground="Red"/>
+				<Run Text="{Binding ConnectionStatus1, FallbackValue=Отключено}" Foreground="{Binding ConnectionColor1, FallbackValue=Red}"/>
 			</TextBlock>
 			<!-- Статус подключения ЭБУ -->
 			<TextBlock FontSize="16" HorizontalAlignment="Left">
 				<Run Text="Подключение к ЭБУ: " Foreground="White"/>
-				<Run Text="Отключено" Foreground="Red"/>
+				<Run Text="{Binding ConnectionStatus2, FallbackValue=Отключено}" Foreground="{Binding ConnectionColor2, FallbackValue=Red}"/>
 			</TextBlock>
 			<!-- Кнопки -->
 			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
 				<Button Content="Подключить" Style="{StaticResource ButtonStyle}"/>
-				<Button Content="Демо" Style="{StaticResource ButtonStyle}"/>
+				<Button Content="Демо" Style="{StaticResource ButtonStyle}" Click="DemoButton_Click"/>
 			</StackPanel>
 		</StackPanel>
         <!--</controls:GradientBorder>-->
