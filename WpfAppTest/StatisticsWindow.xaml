@@ -5,15 +5,40 @@
         xmlns:controls="clr-namespace:WpfOBDTest.Controls"
         Height="Auto" Width="Auto" WindowState="Maximized"
         Background="Black"
-        WindowStyle="SingleBorderWindow">
-    <Grid Margin="10">
+         WindowStyle="None">
+
+    <Grid>
+        <!-- Сетка с двумя строками: верхняя для панели и title bar, нижняя для основного содержимого -->
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <!-- Строка для панели навигации и title bar -->
             <RowDefinition Height="*"/>
+            <!-- Строка для основного содержимого -->
         </Grid.RowDefinitions>
 
-        <!-- Панель навигации -->
-        <controls:NavigationPanel x:Name="NavigationPanel" Grid.Row="0"/>
+        <!-- Панель навигации и Custom Title Bar в одной строке сверху -->
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <!-- Для панели навигации -->
+                <ColumnDefinition Width="*"/>
+                <!-- Для Custom Title Bar -->
+            </Grid.ColumnDefinitions>
+
+            <!-- Панель навигации-->
+            <controls:NavigationPanel x:Name="NavigationPanel" Grid.Column="0" VerticalAlignment="Top" Margin="10,10,0,0"/>
+
+            <!-- Custom Title Bar  -->
+            <controls:CustomTitleBar Grid.Column="1" VerticalAlignment="Top" Margin="10,0,0,0"/>
+        </Grid>
+
+        <!-- Основное содержимое -->
+        <Grid Grid.Row="1" Margin="0,0,0,0">
+            <Grid Margin="10,0,10,10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
         <!-- Градиентная рамка -->
         <Border BorderThickness="2,2,0,0" Padding="20" Grid.Row="1">
@@ -129,5 +154,5 @@
                 </Border>
             </Grid>
         </Border>
-    </Grid>
+    </Grid></Grid></Grid>
 </Window>
