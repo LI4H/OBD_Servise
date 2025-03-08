@@ -7,27 +7,45 @@
         mc:Ignorable="d"
         Title="InfoWindow" Height="Auto" Width="Auto" WindowState="Maximized" ResizeMode="CanResizeWithGrip"
         xmlns:controls="clr-namespace:WpfOBDTest.Controls"
-        Background="Black">
+        Background="Black"
+         WindowStyle="None"
+        >
 
-    <!--<Window.Resources>
-        <Storyboard x:Key="TypingAnimation">
-            <DoubleAnimation
-                Storyboard.TargetName="InfoTextBlock"
-                Storyboard.TargetProperty="Opacity"
-                From="0" To="1" Duration="0:0:1" RepeatBehavior="Forever" AutoReverse="True"/>
-        </Storyboard>
-    </Window.Resources>-->
 
-    <Grid Margin="10">
+    <Grid>
+        <!-- Сетка с двумя строками: верхняя для панели и title bar, нижняя для основного содержимого -->
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <!-- Строка для панели навигации и title bar -->
             <RowDefinition Height="*"/>
+            <!-- Строка для основного содержимого -->
         </Grid.RowDefinitions>
 
-        <!-- Панель навигации -->
-        <controls:NavigationPanel x:Name="NavigationPanel" Grid.Row="0"/>
+        <!-- Панель навигации и Custom Title Bar в одной строке сверху -->
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <!-- Для панели навигации -->
+                <ColumnDefinition Width="*"/>
+                <!-- Для Custom Title Bar -->
+            </Grid.ColumnDefinitions>
 
-        <!-- Градиентная рамка -->
+            <!-- Панель навигации-->
+            <controls:NavigationPanel x:Name="NavigationPanel" Grid.Column="0" VerticalAlignment="Top" Margin="10,10,0,0"/>
+
+            <!-- Custom Title Bar  -->
+            <controls:CustomTitleBar Grid.Column="1" VerticalAlignment="Top" Margin="10,0,0,0"/>
+        </Grid>
+
+        <!-- Основное содержимое -->
+        <Grid Grid.Row="1" Margin="0,0,0,0">
+            <Grid Margin="10,0,10,10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Градиентная рамка -->
         <Border BorderThickness="2,2,0,0" Padding="50" Grid.Row="1">
             <Border.BorderBrush>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
@@ -44,5 +62,5 @@
                            HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0">|</TextBlock>-->
             </Grid>
         </Border>
-    </Grid>
+    </Grid></Grid></Grid>
 </Window>
